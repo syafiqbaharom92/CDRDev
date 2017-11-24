@@ -1,0 +1,29 @@
+<!doctype html>
+<html ng-app="cdrApp">
+<meta name="viewport" content="width=device-width" />
+
+<head>
+    <title>Accordia-CDR</title>
+
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/bower_components/material-design-lite/material.css">
+
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="/bower_components/angular-route/angular-route.js"></script>
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.3/material.min.js"></script>
+    <script src="/src/app.js"></script>
+</head>
+
+<body ng-controller="mainController">
+    
+    <div>
+        <div ng-view></div>  
+    </div>
+              
+<!--<footer class="container-fluid">
+    <p>Footer Text</p>
+</footer>-->
+</body>
+
+</html>
