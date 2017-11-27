@@ -4,6 +4,10 @@ App.config(['$routeProvider', function($routeProvider) {
         $routeProvider
         //change url if you where your page location
             .when('/', {
+            // templateUrl: 'pages/home.html',
+            // controller: 'mainController'
+        })
+        .when('/home', {
             templateUrl: 'pages/home.html',
             controller: 'mainController'
         })
@@ -19,7 +23,24 @@ App.controller('mainController', function($scope) {
     var int2 = 40;
     var total = int1+int2;
     $scope.msg = 'Welcome';
-
+    $scope.user = {
+        firstname : "accordia"
+    };
+    $scope.month = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+    ]
+    
     $scope.search = function() {
 
         var data = {

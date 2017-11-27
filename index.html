@@ -1,26 +1,119 @@
 <!doctype html>
 <html ng-app="cdrApp">
-<meta name="viewport" content="width=device-width" />
+
 
 <head>
     <title>Accordia-CDR</title>
+    <meta name="viewport" content="width=device-width" />
+    <!-- Add to homescreen -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Fallback to homescreen for Chrome <39 on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Material Design Lite">
+    <link rel="icon" sizes="192x192" href="../assets/android-desktop.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+    <link rel="apple-touch-icon" href="../assets/ios-desktop.png">
 
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="/bower_components/material-design-lite/material.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <script src="/bower_components/angular/angular.min.js"></script>
     <script src="/bower_components/angular-route/angular-route.js"></script>
     <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="https://storage.googleapis.com/code.getmdl.io/1.0.3/material.min.js"></script>
     <script src="/src/app.js"></script>
 </head>
 
 <body ng-controller="mainController">
-    
+   <!-- The drawer is always open in large screens. The header is always shown,
+  even in small screens. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+                
+            <div class="mdl-layout-spacer"></div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
+                <label class="mdl-button mdl-js-button mdl-button--icon" for="fixed-header-drawer-exp">
+                    <i class="material-icons">search</i>
+                </label>
+                
+                <div class="mdl-textfield__expandable-holder">
+                    <input class="mdl-textfield__input" type="text" name="sample"
+                        id="fixed-header-drawer-exp">
+                </div>
+            </div>
+            <nav class="mdl-navigation">
+                    <div class="dropdown">
+                            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised" type="button" data-toggle="dropdown">{{user.firstname}}
+                            <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                              <li><a href="#">Logout</a></li>
+                            </ul>
+                    </div>
+                    <!-- <a class="mdl-navigation__link " href="/subjects/">Subjects</a> -->
+            </nav>
+        </div>
+    </header>
+<div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">Accordia Billing</span>
+    <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="#!home">Home</a><!--user can see all billing print-->
+        <a class="mdl-navigation__link" href="#!history">History</a> <!--user can see recent billing print-->
+        <a class="mdl-navigation__link" href="#!ratesetting">Rate Settings</a><!--user can see recent billing print-->
+    </nav>
+</div>
+<main class="mdl-layout__content">
+<div class="page-content"><!-- Your content goes here -->
     <div>
         <div ng-view></div>  
     </div>
-              
+</div>
+</main>
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+      
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Search Bill</h4>
+            </div>
+            <div class="modal-body">
+              <div class="dropdown">
+                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised" type="button" data-toggle="dropdown">Choose Tenant
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Accordia</a></li>
+                      <li><a href="#">Finexus</a></li>
+                      <li><a href="#">Floorplace</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown">
+                        <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised" type="button" data-toggle="dropdown">Choose Monthly
+                        <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                          <li ng-repeat="month in month"><a href="#">{{month}}</a></li>
+                        </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+      
+        </div>
+      </div>
 <!--<footer class="container-fluid">
     <p>Footer Text</p>
 </footer>-->
